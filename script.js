@@ -3,7 +3,8 @@ function exo() {
         chains = text.split(' ');                               /* On sépare chaque chaine de caractères */
     let result = 0;
     for (let chain of chains) {                                 /* On fait la boucle pour toute les chaines de caractère du tableau */
-    let digits = recupDigit(chain);                             /* On récupère le résulat de la fonction qui permet de récupérer les digits*/
+    let chainWithTransformDigit = transformTextToDigit(chain);                          
+    let digits = recupDigit(chainWithTransformDigit);           /* On récupère le résulat de la fonction qui permet de récupérer les digits*/
     result = result + parseInt(digits);                         /* On ajoute ce que la boucle à envoyer a nos résultats d'avant et ainsi de suite*/
     }
     let showResult = document.getElementById("result");
@@ -19,6 +20,21 @@ function recupDigit(chain) {                        /* fonction qui sert à réc
     }
     else return 0;                      
 }
+
+function transformTextToDigit(chain) {                       /* transforme les mots de chiffre (one, two, three...) en chiffre */
+    chain = chain.replaceAll("one", '1');
+    chain = chain.replaceAll("two", '2');
+    chain = chain.replaceAll("three", '3');
+    chain = chain.replaceAll("four", '4');
+    chain = chain.replaceAll("five", '5');
+    chain = chain.replaceAll("six", '6');
+    chain = chain.replaceAll("seven", '7');
+    chain = chain.replaceAll("eight", '8');
+    chain = chain.replaceAll("nine", '9');
+    console.log(chain);
+    return chain;
+}
+
 
 const selection = document.getElementById("textToSplit");
 selection.addEventListener("change", exo);
